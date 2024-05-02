@@ -1,0 +1,259 @@
+% 
+% File          : main.tex
+% Description   : NSF template
+% Authors       : Endadul Hoque
+%
+
+% ready to submit
+\newif\ifSubmitVersion
+
+
+%%%% uncomment it to apply required styles (e.g., remove
+%%%% page numbers)
+\SubmitVersiontrue
+
+
+
+
+% Page style
+\newif\ifPazo
+
+\Pazotrue %%% uncomment it to enable Pazo style
+
+
+
+
+\ifPazo
+\documentclass[letterpaper,10pt]{article}
+\else
+\documentclass[letterpaper,11pt]{article}
+\fi
+
+\usepackage{ifxetex}
+\ifxetex
+% If you want to use Arial font, make sure you have `xelatex` installed. Change 11pt to 10pt.
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Arial}
+
+\usepackage{setspace}
+\setstretch{1.05}
+
+\else
+
+\ifPazo
+\usepackage{mathpazo}
+\usepackage{setspace}
+\setstretch{1.05}
+
+\else
+% Default: use Times-new-roman alternative
+\usepackage{times}
+% Load font encoding after times package
+%\usepackage[T1]{fontenc} %% ATTN: Comment it, otherwise `cmtt` will load a bitmap version (T3), not T1. 
+\usepackage[T1,OT1]{fontenc} %% Making OT1 default to ensure OT1 (T1 if available) of `cmtt` is loaded, not T3.
+
+\fi
+
+%\usepackage[typeface=times,         % as requested
+%sanstypeface=helvetica, % for example
+%monotypeface=cm,        % as requested
+%fontencoding=T1,        % defaults to T1; cf. OT1
+%printinfo]{typeface}    % enables \tfprint commands below
+
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = *}
+\renewcommand{\ttdefault}{cmtt} %%% Ensure that font-encoder is not included \usepackage[T1]{fontenc} in main.tex
+\fi
+
+
+
+
+%%%%%%%%%%%%%%
+% Top directory for contents
+%%%%%%%%%%%%%%%%%%%
+\def\CONTENTDIR{contents}
+\def\BIBDIR{bibs}
+
+
+%% load common packages
+\input{util/packages}
+
+%%% Special style for NSF sections
+\input{util/nsf-sec}
+
+
+%%% Load counter-based macros
+\input{util/counter-macros}
+
+
+
+
+
+%-------------------------Proposal specific MACROs -------------------------
+% Load common Marcos
+\input{util/proposal-macros}
+
+
+% Proposal specific macros
+\newcommand{\venue}{NSF-CNS-Core}
+\def\PDFNAME{main}
+\def\OutputPdfName{Endadul_Hoque_NSF_Core_proposal}
+
+% The following metadata will show up in the PDF properties
+% Set your name here
+\def\name{Endadul Hoque}
+\def\doc{NSF Core 2023 Proposal}
+
+\hypersetup{
+	colorlinks = true,
+	citecolor = black,
+	urlcolor = blue,
+	pdfauthor = {\name},
+	pdfkeywords = {},
+	pdftitle = {\name: \doc},
+	pdfsubject = {\doc},
+	pdfpagemode = UseNone,
+	%bookmarks=true,
+	linkcolor=black
+}
+
+
+%===========================================================================
+% To automatically creating a script
+% that can split the PDF into separate PDF files as per requirement of
+% the funding agency
+\usepackage{pdfpages}
+\newwrite\tempfile
+\immediate\openout\tempfile=cut.sh
+\newcounter{RangeBegin}
+\newcounter{RangeEnd}
+\newcounter{Offset}
+
+% write 
+\immediate\write\tempfile{#! /usr/bin/env bash^^J}
+
+% A macro to write to tempfile
+\newcommand{\cuthere}[2]{\immediate\write\tempfile{pdfjam --paper letter --pdftitle "\doc" --pdfauthor "\name" --pdfsubject "\name:\doc" -o \OutputPdfName-#1.pdf \PDFNAME.pdf #2}}
+%===========================================================================
+
+
+
+%--- page style ----
+\pagestyle{empty}
+
+
+
+%----- Begin document -------
+
+
+
+
+\begin{document}
+
+	
+	
+%================ Project title: just for our record=============
+% Load title
+\input{\CONTENTDIR/title}
+\title{\mytitle}
+\author{PI: \name, Dept. of Electrical Engineering and Computer
+Science, \\ Syracuse University}
+\date{}
+\setcounter{page}{1}
+\maketitle
+
+
+%--- For the cut.sh script ----
+\cuthere{title}{1-\thepage}
+%--------------------------------
+
+
+% ========= Project Summary ==============
+
+%--------------------------------
+%--- For the cut.sh script ----
+\clearpage
+\setcounter{Offset}{\thepage}
+\setcounter{page}{1}
+\setcounter{RangeBegin}{\theOffset + \thepage - 1}
+%---------------------
+
+
+
+% Load summary
+%\nsfsection{PROJECT SUMMARY}
+\input{\CONTENTDIR/summary}
+
+
+%--------------------------------
+\setcounter{RangeEnd}{\theOffset + \thepage - 1}
+\cuthere{summary}{\theRangeBegin-\theRangeEnd}
+%--------------------------------
+
+
+% ========= Project Description ==============
+%------------------------------------------
+% start bookkeeping the next segment
+\clearpage
+\setcounter{Offset}{\theRangeEnd + 1}
+\setcounter{page}{1}
+\setcounter{RangeBegin}{\theOffset + \thepage - 1}
+%------------------------------------------
+
+%\titlespacing{\section}{0pt}{*0.8}{*0}
+
+\ifSubmitVersion
+\pagestyle{empty}
+\nsfsectionstar{PROJECT DESCRIPTION}
+\else
+\pagestyle{plain}
+\nsfsectionstar{PROJECT DESCRIPTION \todo{remove page numbers}}
+\fi
+
+
+
+
+
+%\input{overview}
+\input{\CONTENTDIR/background}
+\input{\CONTENTDIR/resplan}
+\input{\CONTENTDIR/sched}
+\input{\CONTENTDIR/broaderimpacts}
+\input{\CONTENTDIR/prior}
+
+%---------------------------------
+\setcounter{RangeEnd}{\theOffset + \thepage - 1}
+\cuthere{description}{\theRangeBegin-\theRangeEnd}
+%---------------------------------
+
+
+% ========= References ==============
+%------------------------------------------
+% start bookkeeping the next segment
+\clearpage
+\setcounter{Offset}{\theRangeEnd + 1}
+\setcounter{page}{1}
+\setcounter{RangeBegin}{\theOffset + \thepage - 1}
+%------------------------------------------
+
+% References
+\newpage
+\pagestyle{empty}
+%\bibliographystyle{abbrv}
+\bibliographystyle{ieeetr} %% To collapse entries as ranges, e.g., 10-19, 23-25.
+\bibliography{\BIBDIR/ref.bib}
+
+%---------------------------------
+\setcounter{RangeEnd}{\theOffset + \thepage - 1}
+\cuthere{refs}{\theRangeBegin-\theRangeEnd}
+%---------------------------------
+
+
+
+
+
+\end{document}
+
+% Let's close the script file
+\immediate\closeout\tempfile

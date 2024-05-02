@@ -1,0 +1,153 @@
+%%% Packages and common configuration
+
+%% Margin / page width
+\usepackage[margin=1in]{geometry}
+
+%\renewcommand{\ttdefault}{txtt} %% courier for NSF proposal, otherwise use "txtt"
+%\renewcommand{\ttdefault}{pcr}
+
+%\usepackage[scaled=0.9]{couriers}
+
+\usepackage[english]{babel}
+
+%%% Common packages
+\usepackage{epsf}
+\usepackage{epsfig}
+\usepackage{ifthen}
+\usepackage{comment}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+%\usepackage{subfig}
+%\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{floatflt}
+\usepackage{paralist}
+\usepackage{wrapfig}
+\usepackage{xspace}
+\usepackage{tabularx} % also, required for my bio
+
+\usepackage{graphicx}
+% To avoid including full path in figures and allow flexibility of image placement
+%\graphicspath{{figures/}}
+
+\DeclareGraphicsExtensions{%
+	.pdf,.PDF,%
+	%    .png,.PNG,%
+	.eps %
+	%    ,.svg,%
+	%    .jpg,.mps,.jpeg,.jbig2,.jb2,.JPG,.JPEG,.JBIG2,.JB2
+}
+
+
+
+
+%%% Hyper ref with break urls
+\usepackage{hyperref}
+\def\UrlBreaks{\do\/\do-}
+
+%% Load caption after hyperref
+%\usepackage[font=small,margin=.5cm]{caption}
+\usepackage[font=small]{caption}
+\captionsetup[figure]{textfont=it}
+
+
+
+%% Color
+\usepackage[usenames]{color}
+
+
+%% tikz for gantt chart (Schedule)
+\usepackage{tikz}
+\usetikzlibrary{backgrounds,fit, decorations.markings, patterns, shapes, positioning, arrows}
+
+
+% Bibliography : Natbib
+\usepackage[numbers,sort&compress]{natbib}
+\setlength{\bibsep}{0.3ex plus 0.3ex}
+%\setlength{\bibsep}{0.0ex}
+%\renewcommand\refname{\begin{center}References Cited\end{center}}
+
+
+
+
+%--- itemize/enum --
+\usepackage[shortlabels]{enumitem}
+\setlist[enumerate]{itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setlist[itemize]{itemsep=0pt,topsep=2pt,parsep=0pt,partopsep=0pt}
+\setlist[description]{itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setlength{\leftmargin}{20pt}
+
+
+
+
+
+
+
+%------- Code Listing ------------
+\usepackage{listings}
+
+
+
+%COMMON USER MACROS
+\newcommand{\etal}{\textit{et al.}\xspace}
+\newcommand{\eg}{\textit{e.g.}}
+\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\pred}[1]{\textsf{{#1}}\xspace}
+\newcommand{\code}[1]{{\texttt{#1}}\xspace}
+\newcommand{\msg}[1]{{\texttt{#1}}\xspace}
+\newcommand{\paraheading}[1]{\paragraph{#1{}.}\xspace}
+\newcommand{\FIGREF}{Fig.\xspace}
+\newcommand{\TABREF}{Table\xspace}
+
+
+% ----------------  Commenting/Editing macros -----------------
+\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
+\newcommand{\todocite}[1]{\textcolor{red}{[#1]}}
+\newcommand{\todoref}[1]{\textcolor{red}{[#1]}}
+\newcommand{\hoque}[1]{\textcolor{magenta}{HO: #1}}
+
+% Comment related MACROs
+\usepackage{soul,xspace}
+\newcommand{\cutme}[1]{{\color{red}\st{#1}}}
+\newcommand{\TODO}[1]{\hl{{TODO:} #1}\xspace}
+% --------------------------------------------------
+
+
+
+
+
+
+%% -------- macro for wrapping teletype text --------
+%\usepackage{seqsplit}
+%%Verbatim with word wrapping and hyphen
+%%\DeclareTextFontCommand{\ttt}{\ttfamily\lefthyphenmin=0\righthyphenmin=0\hyphenchar\font`\-\relax}
+%\newcommand{\ttt}[1]{%
+%  \begingroup
+%    \protect\renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi}%
+%    \protect\texttt{\protect\seqinsert{\protect\seqsplit{\small#1}}}%
+%  \endgroup
+%}
+%\newcommand{\tttscript}[1]{%
+%  \begingroup
+%    \protect\renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi}%
+%    \protect\texttt{\protect\seqinsert{\protect\seqsplit{\scriptsize#1}}}%
+%  \endgroup
+%}
+%\newcommand{\tttfoot}[1]{%
+%  \begingroup
+%    \protect\renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi}%
+%    \protect\texttt{\protect\seqinsert{\protect\seqsplit{\footnotesize#1}}}%
+%  \endgroup
+%}
+%% --------------------------------------------------
+
+
+%% Drawing large braces under equations
+\usepackage{mathtools}
+
+
+%% For Text underline-ing
+\usepackage[normalem]{ulem}
+
+%%% for checkmark
+\usepackage{amsmath}

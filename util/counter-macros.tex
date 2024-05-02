@@ -1,0 +1,44 @@
+%============================================
+%----- Special MACROs with auto-counters ----
+%============================================
+
+%-------- Research goals -----------------
+%\newcounter{goalctr}
+%\newcommand{\goal}{
+%  \addtocounter{goalctr}{1}
+%  \noindent {\bf Research Goal \arabic{goalctr}:}
+%}
+%
+%\renewcommand{\floatpagefraction}{.8}%
+
+% --------- Thrust and Task Counters --------------
+\newcounter{thrust}
+\renewcommand\thethrust{\arabic{thrust}}
+\newcommand{\thrust}[2]{
+	\refstepcounter{thrust}
+	\label{#2}
+	\subsection{Thrust \thethrust:~ #1}
+}
+
+\newcounter{task}[thrust]
+\renewcommand\thetask{\thethrust.\arabic{task}}
+\newcommand{\task}[2]{
+	\refstepcounter{task}
+	\label{#2}
+%	\vspace{6pt}
+%	\noindent
+%	{\bf Task \thetask:~ #1}
+	\subsubsection{Task \thetask:~ #1}
+}
+\newcommand{\taskpart}[1]{\vspace{2pt}\noindent\textbf{{#1}:}}
+% --------------------------------------------------
+
+
+
+%% For Antagonist Arguments
+\newcounter{argctr}
+\setcounter{argctr}{0}
+\newcommand{\argument}[1]{%
+	\stepcounter{argctr}%
+	\vspace*{3pt}%
+	\noindent{\textbf{Argument~\arabic{argctr}.}}~\textit{#1}\xspace}

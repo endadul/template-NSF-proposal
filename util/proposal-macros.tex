@@ -1,0 +1,120 @@
+%% Paper/proposal specific Macros
+
+%% Name of the proposed system
+\newcommand{\sysname}{ABC\xspace}
+\newcommand{\systemname}{{\sysname}\xspace}
+\newcommand{\systemdef}{{definition}\xspace}
+
+
+%%% Name of the Thrusts
+\newcommand{\thSpec}{thrust name\xspace}
+\newcommand{\thMutators}{thrust name\xspace}
+\newcommand{\thStateful}{thrust name \xspace}
+
+
+
+%Proposal specific MACROs
+%% System specific macros
+
+\newcommand{\iotsystem}{\ensuremath{\mathcal{I}}\xspace}
+\newcommand{\states}{\ensuremath{\mathcal{S}}\xspace}
+\newcommand{\rules}{\ensuremath{\mathcal{AU}}\xspace}
+\newcommand{\action}{\ensuremath{\mathcal{A}}\xspace}
+\newcommand{\variable}{\ensuremath{\mathcal{V}}\xspace}
+\newcommand{\domain}{\ensuremath{\mathcal{D}}\xspace}
+\newcommand{\transition}{\ensuremath{\mathcal{T}}\xspace}
+
+\newcommand{\policy}{\ensuremath{\Psi}\xspace}
+
+%\newcommand{\plang}{\textsc{UPL}\xspace}
+
+
+\newcommand{\ang}[1]{\ensuremath{#1}}
+
+\newcommand{\decisionFunction}{\ensuremath{\Delta}\xspace}
+
+\newcommand{\since}[1]{\ensuremath{\mathcal{S}_{#1}}\xspace}
+
+\newcommand{\sinceOp}[2]{\ensuremath{\mathsf{Since}_{[\ell, r]}(#1, #2)}\xspace}
+\newcommand{\onceOp}{\ensuremath{\mathsf{Once}_{[\ell, r]}(\varphi)}\xspace}
+
+
+%-------------------------------------
+% Listing specific configuration
+%-------------------------------------
+%
+%\lstdefinelanguage{myCustomUPL}{%
+%	morekeywords={action_command,action_device,ALLOW,AND,
+%		automation_unit,current_time,
+%		EXCEPT,LASTLY,ONCE, IF,
+%		ONLY,OR,POLICY,SINCE,state,WITHIN},%
+%	sensitive=true,%
+%	morecomment=[s]{[}{]},%
+%	morecomment=[s]{\{}{\}},%
+%	morestring=[d]{'}%
+%}
+
+
+\lstdefinestyle{customc}{
+	belowcaptionskip=0.5\baselineskip,
+	breaklines=true,
+	%frame=,
+	tabsize=2,
+	xleftmargin=\parindent,
+	language=C,
+	showstringspaces=false,
+%	basicstyle=\scriptsize\ttfamily\bfseries,
+	basicstyle=\footnotesize\ttfamily\bfseries,
+	keywordstyle=\color{purple!75!black}\slshape,
+	commentstyle=\itshape\color{orange!65!black}\mdseries,
+	identifierstyle=\color{blue!60!black},
+	stringstyle=\color{green!60!yellow!50!black},
+	numbers=left,
+	%stepnumber=1,
+	%escapeinside={\%*}{*)}
+}
+
+
+%% Specific to this proposal
+\newcommand{\pkcs}{{PKCS\#1}\xspace}
+\newcommand{\pkcsver}{{PKCS\#1 v1.5}\xspace}
+\newcommand{\XFiveZeroNine}{{X.509}\xspace}
+\newcommand{\cgf}{{CGF}\xspace}
+\newcommand{\cgfs}{{CGFs}\xspace}
+
+\newcommand{\PP}{\ensuremath{\mathcal{P}}\xspace}
+\newcommand{\Sign}{\ensuremath{\mathcal{S}}\xspace}
+\newcommand{\GG}{\ensuremath{\mathcal{G}}\xspace}
+\newcommand{\LL}{\ensuremath{\mathsf{L}}\xspace}
+\newcommand{\II}{\ensuremath{\mathcal{I}}\xspace}
+
+\newcommand{\chalOne}{\textbf{C1}\xspace}
+\newcommand{\chalTwo}{\textbf{C2}\xspace}
+\newcommand{\chalThree}{\textbf{C3}\xspace}
+
+\newcommand{\TLV}{\code{$\langle$Type,{}Length,{}Value$\rangle$}\xspace}
+\newcommand{\tlv}{{$\langle t,\ell,v \rangle$}\xspace}
+\newcommand{\GetLength}[1]{\ensuremath{\left| {#1}\right|}\xspace}
+%\newcommand{\length}{\code{Length}\xspace}
+%\newcommand{\type}{\code{Type}\xspace}
+%\newcommand{\v}{\code{Value}\xspace}
+
+
+%\newcommand{\LG}{\ensuremath{\mathcal{L_G}}\xspace}
+\newcommand{\lang}{\ensuremath{\mathbb{L_P}}\xspace}
+
+\newcommand{\TILDE}{\ensuremath{\sim}\xspace}
+
+\newcommand{\SHORTREF}{\ensuremath{\S}}
+
+
+\newenvironment{allintypewriter}{\ttfamily}{\par}
+
+
+%%% Crash line no in motivation example code
+\newcommand{\crashlineno}{8\xspace}
+
+
+%%%% hide text to shorten
+\newcommand{\hide}[1]{\xspace}
+

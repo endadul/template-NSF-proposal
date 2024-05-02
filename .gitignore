@@ -1,0 +1,17 @@
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.ps
+*.sublime-project
+*.sublime-workspace
+*.toc
+*~*
+*.bak
+*.out
+*synctex.gz
+main.pdf
+cut.sh
+*-eps-converted-to.pdf
+Secular-IoT-proposal*.pdf
